@@ -83,8 +83,11 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public void getFiles(HttpServletResponse response) throws IOException {
+    public void getFiles(HttpServletResponse response) throws IOException, EmptyFileException {
         List<File> fileList = fileRepository.findAll();
+        if (fileList.isEmpty()) {
+            throw new EmptyFileException("No files found in database storage.");
+        }
 
         try (ServletOutputStream servletOutputStream = response.getOutputStream();
              ZipOutputStream zos = new ZipOutputStream(servletOutputStream)) {

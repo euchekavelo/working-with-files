@@ -16,5 +16,5 @@ public interface FileService {
 
     ResponseDto deleteFile(Integer fileId) throws EmptyFileException;
 
-    void getFiles(HttpServletResponse response) throws IOException;
+    void getFiles(HttpServletResponse response) throws IOException, EmptyFileException;
 }

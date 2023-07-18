@@ -43,7 +43,7 @@ public class FileController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<Void> getFiles(HttpServletResponse response) throws IOException {
+    public ResponseEntity<Void> getFiles(HttpServletResponse response) throws IOException, EmptyFileException {
         fileService.getFiles(response);
         return ResponseEntity.ok().build();
     }
